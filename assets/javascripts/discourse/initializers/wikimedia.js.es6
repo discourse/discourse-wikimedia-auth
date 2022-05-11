@@ -6,6 +6,8 @@ export default {
   initialize() {
     withPluginApi("0.8.23", (api) => {
       api.modifyClass("controller:preferences/account", {
+        pluginId: "discourse-wikimedia-auth",
+
         @discourseComputed
         canUpdateAssociatedAccounts() {
           return false;
