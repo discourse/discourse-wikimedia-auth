@@ -12,16 +12,15 @@ enabled_site_setting :wikimedia_auth_enabled
 
 register_asset "stylesheets/common/wikimedia.scss"
 
-%w[../lib/auth/wikimedia_authenticator.rb ../lib/wikimedia_username.rb].each do |path|
-  load File.expand_path(path, __FILE__)
-end
+require_relative "lib/auth/wikimedia_authenticator"
+require_relative "lib/wikimedia_username"
 
 auth_provider authenticator: Auth::WikimediaAuthenticator.new
 
 after_initialize do
-  %w[../extensions/guardian.rb].each { |path| load File.expand_path(path, __FILE__) }
+  require_relative "extensions/guardian"
 
-  ::Guardian.prepend GuardianWikimediaExtension
+  reloadable_patch { Guardian.prepend(GuardianWikimediaExtension) }
 
   add_to_serializer(:user, :wiki_username) do
     UserAssociatedAccount
