@@ -1,6 +1,6 @@
-{{#if user.wiki_username}}
+{{#if this.user.wiki_username}}
   <img
     src="/plugins/discourse-wikimedia-auth/images/wikimedia-logo-black.png"
   />
-  <a href={{wikiUserUrl}}>{{user.wiki_username}}</a>
+  <a href={{this.wikiUserUrl}}>{{this.user.wiki_username}}</a>
 {{/if}}
