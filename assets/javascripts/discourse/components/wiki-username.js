@@ -3,7 +3,7 @@ import { schedule } from "@ember/runloop";
 import { service } from "@ember/service";
 import { classNameBindings, tagName } from "@ember-decorators/component";
 import $ from "jquery";
-import discourseComputed from "discourse-common/utils/decorators";
+import discourseComputed from "discourse/lib/decorators";
 
 @classNameBindings(":wiki-username")
 @tagName("h2")
